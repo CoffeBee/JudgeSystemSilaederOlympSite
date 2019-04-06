@@ -1,0 +1,3 @@
+[console_scripts]
+cf-run = codeforces.cf_run:main
+
