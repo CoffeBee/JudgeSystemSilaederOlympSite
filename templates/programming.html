@@ -53,8 +53,8 @@
           <div class="t454__leftwrapper" style="padding-left:20px; padding-right:160px; text-align: left;">
             <div class="t454__leftmenuwrapper">
               <ul class="t454__list">
-                <li class="t454__list_item"><a class="t-menu__link-item" href="programming" style="color:#ffffff;font-weight:600;" data-menu-item-number="1">Programming</a></li>
-                <li class="t454__list_item"><a class="t-menu__link-item" href="programming" style="color:#ffffff;font-weight:600;" data-menu-item-number="2">Math</a></li>
+                <li class="t454__list_item"><a class="t-menu__link-item" href="." style="color:#ffffff;font-weight:600;" data-menu-item-number="1">Programming</a></li>
+                <li class="t454__list_item"><a class="t-menu__link-item" href="../math" style="color:#ffffff;font-weight:600;" data-menu-item-number="2">Math</a></li>
                 <li class="t454__list_item"><a class="t-menu__link-item" href="programming" style="color:#ffffff;font-weight:600;" data-menu-item-number="3">CTF</a></li>
                 <li class="t454__list_item"><a class="t-menu__link-item" href="programming" style="color:#ffffff;font-weight:600;" data-menu-item-number="4">Art</a></li>
               </ul>
@@ -97,9 +97,10 @@
       <!--[if IE 8]><style>#rec96315475 .t454 { filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9000000', endColorstr='#D9000000');
 }</style><![endif]-->
     </div>
-    <div id="rec96318393" class="r t-rec" style=" " data-record-type="390">
+    {% for i in tasks %}
+    <div id="rec{{ i.6 }}" class="r t-rec" style=" " data-record-type="390">
       <div class="t390">
-        <div class="t-popup" data-tooltip-hook="#popup:warning">
+        <div class="t-popup" data-tooltip-hook="#popup:warning{{ i.0 }}">
           <div class="t-popup__close">
             <div class="t-popup__close-wrapper"> <svg class="t-popup__close-icon" width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
@@ -112,7 +113,7 @@
             <div class="t390__wrapper t-align_center">
               <div class="t390__title t-heading t-heading_lg" style=""><span style="color: rgb(175, 45, 45);">Warning</span><span style="color: rgb(175, 45, 45);">!</span> You will spend Silashiki</div>
               <div class="t390__descr t-descr t-descr_xs" style="">Make sure that you want to buy it. You can't undo it</div>
-              <div class="t390__btn-wrapper"> <a href="programming/shop/buy/" target="" class="t390__btn t390__btn_first t-btn "
+              <div class="t390__btn-wrapper"> <a href="./shop/buy/{{ i.6 }}" target="" class="t390__btn t390__btn_first t-btn "
                   style="margin-right: 8px; color:#222222;border:2px solid #222222;border-radius:100px; -moz-border-radius:100px; -webkit-border-radius:100px;">
                   <table style="width:100%; height:100%;">
                     <tr>
@@ -132,18 +133,18 @@
       </div>
       <script type="text/javascript">
         $(document).ready(function() {
-          $("#rec96318393").attr('data-animationappear', 'off');
-          $("#rec96318393").css('opacity', '1');
+          $("#rec{{ i.6 }}").attr('data-animationappear', 'off');
+          $("#rec{{ i.6 }}").css('opacity', '1');
           setTimeout(function() {
-            t390_initPopup('96318393');
+            t390_initPopup('{{ i.6 }}');
           }, 500);
         });
       </script>
       <style>
-        #rec96318393 .t-btn[data-btneffects-first],
-        #rec96318393 .t-btn[data-btneffects-second],
-        #rec96318393 .t-submit[data-btneffects-first],
-        #rec96318393 .t-submit[data-btneffects-second] {
+        #rec{{ i.6 }} .t-btn[data-btneffects-first],
+        #rec{{ i.6 }} .t-btn[data-btneffects-second],
+        #rec{{ i.6 }} .t-submit[data-btneffects-first],
+        #rec{{ i.6 }} .t-submit[data-btneffects-second] {
           position: relative;
           overflow: hidden;
           -webkit-transform: translate3d(0, 0, 0);
@@ -154,6 +155,7 @@
         $(document).ready(function() {});
       </script>
     </div>
+    {% endfor %}
     <div id="rec96327549" class="r t-rec" style=" " data-record-type="390">
       <div class="t390">
         <div class="t-popup" data-tooltip-hook="#popup:statement">
@@ -269,21 +271,21 @@
             <div class="t-col t-col_8 ">
               <div class="t005__text t-text t-text_md" style="color:#ffffff;" field="text"><span style="color: rgb(30, 124, 52);">&gt;</span> Hi, you login succeed. Now i will show you programming tasks.<br /><span
                   style="color: rgb(30, 124, 52);">&gt;</span> Format of data<br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#Id.Name @ Goal @ Statement Price @ Test Price<br /><br /><span
-                  style="color: rgb(175, 45, 45);">---------------------------------------------------------------<br /></span><br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#1.LupopiniyJenia @ +500 @ <a
-                  href="#popup:warning" style="">-100</a> @ <a href="#popup:warning" style="">-125</a> &amp;&amp; <a href="#popup:warning" style="">-125</a><br /><span style="color: rgb(30, 124, 52);">&gt;</span>
-                $Task#2.OlyaVStolovke @ +500 @ <span style="color: rgb(0, 0, 0);"><a href="#popup:warning" style="">-100</a></span> @ <a href="#popup:warning" style="">-125</a> &amp;&amp; <a href="#popup:warning"
-                  style="">-125</a><br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#3.LingvistiIMatematiki @ +1000 @ <a href="#popup:warning" style="">-200</a> @ <a href="#popup:warning" style="">-250</a>
-                &amp;&amp; <a href="#popup:warning" style="">-250</a><br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#4.StepaNokNod @ +1000 @ <a href="#popup:warning" style="">-175</a> @ <a
-                  href="#popup:warning" style="">-225</a> &amp;&amp; <a href="#popup:warning" style="">-225</a><br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#5.PoezdkaVZvenigorod @ +1000 @ <span
-                  style="color: rgb(0, 0, 0);"><a href="#popup:warning" style="">-150</a></span> @ <a href="#popup:warning" style="">-220</a> &amp;&amp; <a href="#popup:warning" style="">-220</a><br /><span
-                  style="color: rgb(30, 124, 52);">&gt;</span> $Task#6.VasyaVNMernom @ +1500 @ <a href="#popup:warning" style="">-300</a> @ <a href="#popup:warning" style="">-325</a> &amp;&amp; <a
-                  href="#popup:warning" style="">-325</a><br /><span style="color: rgb(30, 124, 52);">&gt;</span> $Task#7.VasyaVNMernomBig @ +1500 @ <a href="#popup:warning" style="">-250</a> @ <a
-                  href="#popup:warning" style="">-350</a> &amp;&amp; <a href="#popup:warning" style="">-350</a><br /></div>
+                  style="color: rgb(175, 45, 45);">---------------------------------------------------------------<br /></span><br />
+                {% for i in tasks %}
+                <span style="color: rgb(30, 124, 52);">&gt;</span>$Task#{{ i.0 }}.{{ i.1 }} @ +{{ i.2 }} @ <a href="#popup:warning{{ i.0 }}" style="">-{{ i.3 }}</a> @ <a href="#popup:warning{{ i.0 }}" style="">-{{ i.4 }}</a></a><br />
+                {% endfor %}
+              </div>
             </div>
             <div class="t-col t-col_4 ">
-              <div class="t005__text t-text t-text_md" style="color:#ffffff;" field="text2"><br /><br /><br /><br /><br /><br /><a href="#popup:statement" style="">statement</a> @ <a href="#popup:tests"
-                  style="">tests</a><br /><a href="#popup:statement" style="">statement</a> @ <a href="#popup:tests" style="">tests</a><br /><br /><a href="#popup:statement" style="">statement</a><br /><a
-                  href="#popup:statement" style="">statement</a> @ <a href="#popup:tests" style="">tests</a></div>
+              <div class="t005__text t-text t-text_md" style="color:#ffffff;" field="text2"><br /><br /><br /><br /><br /><br />
+                  {% for i in pur %}
+                      {% if i.0 == True %}
+                          <a href="../tasks/statement/{{ i.1 }}" style="">statement</a>
+                      {% endif %}
+                    <br/>
+                  {% endfor %}
+              </div>
             </div>
           </div>
         </div>
@@ -301,36 +303,7 @@
       </div>
     </div>
   </div>
-  <!--/allrecords-->
-  <!-- Tilda copyright. Don't remove this line -->
-  <div class="t-tildalabel " id="tildacopy" data-tilda-sign="570018#5350216"><a href="https://tilda.cc/?upm=570018" class="t-tildalabel__link">
-      <div class="t-tildalabel__wrapper">
-        <div class="t-tildalabel__txtleft">Made on </div>
-        <div class="t-tildalabel__wrapimg"><img src="https://static.tildacdn.com/img/tildacopy.png" class="t-tildalabel__img"></div>
-        <div class="t-tildalabel__txtright">Tilda</div>
-      </div>
-    </a></div><!-- Stat -->
-  <script type="text/javascript">
-    if (!window.mainTracker) {
-      window.mainTracker = 'tilda';
-    }(function(d, w, k, o, g) {
-      var n = d.getElementsByTagName(o)[0],
-        s = d.createElement(o),
-        f = function() {
-          n.parentNode.insertBefore(s, n);
-        };
-      s.type = "text/javascript";
-      s.async = true;
-      s.key = k;
-      s.id = "tildastatscript";
-      s.src = g;
-      if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-      } else {
-        f();
-      }
-    })(document, window, '8ad1730a45ac0541704e01f2e7807d00', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
-  </script>
+
 </body>
 
 </html>

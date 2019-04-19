@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class TaskProgrammingPurchases(models.Model):
-    userid = models.IntegerField()
-    item_id = models.IntegerField()
+    username = models.CharField(default='CoffeBee', max_length=200)
+    item_level = models.IntegerField(default=1)
     item_type = models.CharField(max_length=200)
 
 class ProgrammingSubmits(models.Model):

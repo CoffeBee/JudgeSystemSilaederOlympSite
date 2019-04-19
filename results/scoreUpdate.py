@@ -9,7 +9,7 @@ from programming.models import ProgrammingSubmits
 import sys
 import json
 from django.contrib.auth.models import User
-
+from django.db.models import Model
 class ScoreUpdate():
     def __init__(self, CTFstdScore, MathstdScore, ProgstdScore, CTFstdPlusser, MathstdPlusser, ProgstdPlusser, apiKey, apiSecret, contestId):
         self.CTFstdScore = CTFstdScore
@@ -24,17 +24,36 @@ class ScoreUpdate():
         self.apiSecret = apiSecret
 
     def setToStd(self):
-        for i in CTFScore.objects.all():
-            i.score = self.CTFstdScore
-            i.pluser =  self.CTFstdPlusser
+        for i in User.objects.all():
+            try:
+                score = score = ProgScore.objects.get(user=i)
+                score.score = self.ProgstdScore
+                score.pluser = self.ProgstdPlusser
+                score.save()
 
-        for i in MathScore.objects.all():
-            i.score = self.MathstdScore
-            i.pluser = self.MathstdPlusser
+            except ProgScore.DoesNotExist:
+                score = ProgScore(user=i, pluser=self.ProgstdPlusser, score=self.ProgstdScore)
+                score.save()
 
-        for i in ProgScore.objects.all():
-            i.score = self.ProgstdScore
-            i.pluser = self.ProgstdPlusser
+            try:
+                score = score = MathScore.objects.get(user=i)
+                score.score = self.MathstdScore
+                score.pluser = self.MathstdPlusser
+                score.save()
+
+            except MathScore.DoesNotExist:
+                score = MathScore(user=i, pluser=self.MathstdPlusser, score=self.MathstdScore)
+                score.save()
+
+            try:
+                score = score = CTFScore.objects.get(user=i)
+                score.score = self.CTFstdScore
+                score.pluser = self.CTFstdPlusser
+                score.save()
+
+            except CTFScore.DoesNotExist:
+                score = CTFScore(user=i, pluser=self.CTFstdPlusser, score=self.CTFstdScore)
+                score.save()
 
     def startMonitor(self, timeInterval, lastSubmitId, contestId):
         self.MonitorThread = threading.Thread(target=self.Monitor, args=(timeInterval, lastSubmitId, contestId,))

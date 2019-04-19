@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, get_user_model
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'style' : 'background-color : transparent', 'class' : 'tn-atom', 'field' : 'tn_text_1555101043582'}))
+    password = forms.CharField(widget=forms.TextInput(attrs={'style' : 'background-color : transparent', 'class' : 'tn-atom', 'field' : 'tn_text_1555101043582'}))
 
     def clean(self, *args, **kwargs):
         username = self.cleaned_data.get('username')
@@ -22,26 +22,3 @@ class UserLoginForm(forms.Form):
 
 
 User = get_user_model()
-
-
-class UserRegisterForm(forms.ModelForm):
-    username = forms.CharField(label='Ваш ник')
-    email = forms.EmailField(label='Ваш e-mail адрес')
-    password = forms.CharField(widget=forms.PasswordInput, label='Ваш пароль')
-
-    class Meta:
-        model = User
-        fields = [
-            'username',
-            'email',
-            'password',
-        ]
-
-    def clean(self, *args, **kwargs):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-        email_qs = User.objects.filter(email=email)
-        if email_qs.exists():
-            raise forms.ValidationError(
-                'Этот e-mail уже привязан к другому аккаунту')
-        return super().clean(*args, **kwargs)

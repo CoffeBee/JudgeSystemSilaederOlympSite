@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
-from .forms import UserLoginForm, UserRegisterForm
+from .forms import UserLoginForm
 from django.contrib.auth import authenticate, login, logout
 
 
 def login_view(request):
+    if (request.user.is_authenticated):
+        return  redirect('/programming')
     next = request.GET.get('next')
     form = UserLoginForm(request.POST or None)
+    print(request.POST)
     if form.is_valid():
+        print(1)
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
@@ -14,7 +18,7 @@ def login_view(request):
         if next:
             return redirect(next)
         return redirect('/')
-
+    print(form.errors)
     context = {
         'form': form,
     }
@@ -24,24 +28,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
-
-
-def register_view(request):
-    next = request.GET.get('next')
-    form = UserRegisterForm(request.POST or None)
-    if form.is_valid():
-        user = form.save(commit=False)
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password')
-        user.set_password(password)
-        user.save()
-        user = authenticate(username=user.username, password=password)
-        login(request, user)
-        if next:
-            return redirect(next)
-        return redirect('/')
-
-    context = {
-        'form': form,
-    }
-    return render(request, '', context)
