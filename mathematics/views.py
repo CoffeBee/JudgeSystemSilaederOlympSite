@@ -49,6 +49,7 @@ def math(request):
             answer = form.cleaned_data.get('answer')
             description = form.cleaned_data.get('description')
             Task = TaskMathematics.objects.get(level=int(level))
+            # Тут создается в базе новый сабмит и он привязан к челу
             if (Task.type == 0):
                 if (Task.answer==answer):
                     NewSubmit = MathSubmits(username=request.user.username, description=description, answer=answer, verdict="OK", level=level)
@@ -85,6 +86,7 @@ def purchases(request, level):
     return redirect('../../../')
 
 def judge(request):
+    # Тут часть для жури
     if (request.user.is_authenticated):
         if (request.user.is_superuser):
             Submits = MathSubmits.objects.filter(verdict='PD', judge=request.user)
